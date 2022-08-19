@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src='https://i.ibb.co/DKrGhVQ/Frame-1-1.png' width="100%" alt='React Diff Viewer' />
 </p>
@@ -10,25 +9,25 @@
 
 A simple and beautiful text diff viewer component made with [Diff](https://github.com/kpdecker/jsdiff) and [React](https://reactjs.org).
 
-Inspired from Github diff viewer, it includes features like split view, inline view, word diff, line highlight and more. It is highly customizable and it supports almost all languages.
+Fork from Github [React diff view](https://www.npmjs.com/package/react-diff-viewer), it includes features like split view, inline view, word diff, line highlight and more. It is highly customizable and it supports almost all languages.
 
-Check [here](https://github.com/praneshr/react-diff-viewer/tree/v2.0) for v2.0
+No limit React version as [React diff view](https://www.npmjs.com/package/react-diff-viewer)
 
 ## Install
 
 ```bash
-yarn add react-diff-viewer
+yarn add react-diff-viewer-ur
 
 # or
 
-npm i react-diff-viewer
+npm i react-diff-viewer-ur
 ```
 
 ## Usage
 
 ```javascript
-import React, { PureComponent } from 'react';
-import ReactDiffViewer from 'react-diff-viewer';
+import React, { PureComponent } from "react";
+import ReactDiffViewer from "react-diff-viewer-ur";
 
 const oldCode = `
 const a = 10
@@ -52,9 +51,7 @@ if(a === 10) {
 
 class Diff extends PureComponent {
   render = () => {
-    return (
-      <ReactDiffViewer oldValue={oldCode} newValue={newCode} splitView={true} />
-    );
+    return <ReactDiffViewer oldValue={oldCode} newValue={newCode} splitView={true} />;
   };
 }
 ```
@@ -67,7 +64,7 @@ class Diff extends PureComponent {
 | newValue                  | `string`        | `''`                           | New value as string.                                                                                                                                                                                                                                                                                                                                                                                             |
 | splitView                 | `boolean`       | `true`                         | Switch between `unified` and `split` view.                                                                                                                                                                                                                                                                                                                                                                       |
 | disableWordDiff           | `boolean`       | `false`                        | Show and hide word diff in a diff line.                                                                                                                                                                                                                                                                                                                                                                          |
-| compareMethod             | `DiffMethod`    | `DiffMethod.CHARS`             | JsDiff text diff method used for diffing strings. Check out the [guide](https://github.com/praneshr/react-diff-viewer/tree/v3.0.0#text-block-diff-comparison) to use different methods.                                                                                                                                                                                                                          |
+| compareMethod             | `DiffMethod`    | `DiffMethod.CHARS`             | JsDiff text diff method used for diffing strings. Check out the [guide](https://github.com/hcnhatnam/react-diff-viewer-ur#text-block-diff-comparison) to use different methods.                                                                                                                                                                                                                                  |
 | hideLineNumbers           | `boolean`       | `false`                        | Show and hide line numbers.                                                                                                                                                                                                                                                                                                                                                                                      |
 | renderContent             | `function`      | `undefined`                    | Render Prop API to render code in the diff viewer. Helpful for [syntax highlighting](#syntax-highlighting)                                                                                                                                                                                                                                                                                                       |
 | onLineNumberClick         | `function`      | `undefined`                    | Event handler for line number click. `(lineId: string) => void`                                                                                                                                                                                                                                                                                                                                                  |
@@ -93,17 +90,15 @@ An example using [Prism JS](https://prismjs.com)
 
 ```html
 // Load Prism CSS
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.css"
-/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.css" />
 
 // Load Prism JS
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/prism.min.js"></script>
 ```
 
 ```javascript
-import React, { PureComponent } from 'react';
-import ReactDiffViewer from 'react-diff-viewer';
+import React, { PureComponent } from "react";
+import ReactDiffViewer from "react-diff-viewer-ur";
 
 const oldCode = `
 const a = 10
@@ -128,7 +123,7 @@ if(a === 10) {
 class Diff extends PureComponent {
   highlightSyntax = str => (
     <pre
-      style={{ display: 'inline' }}
+      style={{ display: "inline" }}
       dangerouslySetInnerHTML={{
         __html: Prism.highlight(str, Prism.languages.javascript),
       }}
@@ -136,14 +131,7 @@ class Diff extends PureComponent {
   );
 
   render = () => {
-    return (
-      <ReactDiffViewer
-        oldValue={oldCode}
-        newValue={newCode}
-        splitView={true}
-        renderContent={this.highlightSyntax}
-      />
-    );
+    return <ReactDiffViewer oldValue={oldCode} newValue={newCode} splitView={true} renderContent={this.highlightSyntax} />;
   };
 }
 ```
@@ -165,8 +153,8 @@ enum DiffMethod {
 ```
 
 ```javascript
-import React, { PureComponent } from 'react';
-import ReactDiffViewer, { DiffMethod } from 'react-diff-viewer';
+import React, { PureComponent } from "react";
+import ReactDiffViewer, { DiffMethod } from "react-diff-viewer-ur";
 
 const oldCode = `
 {
@@ -184,14 +172,7 @@ const newCode = `
 
 class Diff extends PureComponent {
   render = () => {
-    return (
-      <ReactDiffViewer
-        oldValue={oldCode}
-        newValue={newCode}
-        compareMethod={DiffMethod.WORDS}
-        splitView={true}
-      />
-    );
+    return <ReactDiffViewer oldValue={oldCode} newValue={newCode} compareMethod={DiffMethod.WORDS} splitView={true} />;
   };
 }
 ```
@@ -289,8 +270,8 @@ To override any style, just pass the new style object to the `styles` prop. New 
 For keys other than `variables`, the value can either be an object or string interpolation.
 
 ```javascript
-import React, { PureComponent } from 'react';
-import ReactDiffViewer from 'react-diff-viewer';
+import React, { PureComponent } from "react";
+import ReactDiffViewer from "react-diff-viewer-ur";
 
 const oldCode = `
 const a = 10
@@ -315,7 +296,7 @@ if(a === 10) {
 class Diff extends PureComponent {
   highlightSyntax = str => (
     <span
-      style={{ display: 'inline' }}
+      style={{ display: "inline" }}
       dangerouslySetInnerHTML={{
         __html: Prism.highlight(str, Prism.languages.javascript),
       }}
@@ -326,27 +307,19 @@ class Diff extends PureComponent {
     const newStyles = {
       variables: {
         dark: {
-          highlightBackground: '#fefed5',
-          highlightGutterBackground: '#ffcd3c',
+          highlightBackground: "#fefed5",
+          highlightGutterBackground: "#ffcd3c",
         },
       },
       line: {
-        padding: '10px 2px',
-        '&:hover': {
-          background: '#a26ea1',
+        padding: "10px 2px",
+        "&:hover": {
+          background: "#a26ea1",
         },
       },
     };
 
-    return (
-      <ReactDiffViewer
-        styles={newStyles}
-        oldValue={oldCode}
-        newValue={newCode}
-        splitView={true}
-        renderContent={this.highlightSyntax}
-      />
-    );
+    return <ReactDiffViewer styles={newStyles} oldValue={oldCode} newValue={newCode} splitView={true} renderContent={this.highlightSyntax} />;
   };
 }
 ```
